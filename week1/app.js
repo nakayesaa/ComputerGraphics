@@ -91,9 +91,6 @@ function drawPlayer() {
   ctx.fillRect(player.x, player.y, player.width, player.height);
 
   ctx.fillStyle = "#ffffffe6";
-  ctx.fillRect(player.x + 14, player.y + 17, 9, 9);
-  ctx.fillRect(player.x + 41, player.y + 17, 9, 9);
-  ctx.fillRect(player.x + 17, player.y + 43, 30, 5);
 }
 
 function drawLabels() {
