@@ -99,10 +99,10 @@ function drawPlayer() {
 function drawLabels() {
   ctx.fillStyle = "#718097";
   ctx.font = "600 15px system-ui, sans-serif";
-  ctx.fillText("CIRCLE: click the moving circle", ball.x - 98, Math.max(24, ball.y - 42));
+  ctx.fillText("CIRCLE", ball.x - 25, Math.max(24, ball.y - 42));
   ctx.fillText("TRIANGLE", 682, 225);
   ctx.fillText("LINE", 70, 250);
-  ctx.fillText("RECTANGLE: move with WASD", player.x - 2, player.y - 13);
+  ctx.fillText("RECTANGLE", player.x - 2, player.y - 13);
 }
 
 function getDirection() {
