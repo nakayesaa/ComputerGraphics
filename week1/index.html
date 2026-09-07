@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Graphic Playground sederhana menggunakan HTML Canvas 2D.">
+    <title>Graphic Playground</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <p class="eyebrow">Praktikum Grafika Komputer</p>
+        <h1>Graphic Playground</h1>
+      </header>
+
+      <section class="workspace" aria-label="Area Graphic Playground">
+        <div class="toolbar" aria-live="polite">
+          <div class="status">
+            <span>Koordinat Mouse</span>
+            <strong id="mousePosition">x: — &nbsp; y: —</strong>
+          </div>
+          <div class="status">
+            <span>Challenge: Tangkap Bola</span>
+            <strong>Skor: <b id="score">0</b></strong>
+          </div>
+          <div class="status">
+            <span>Status Animasi</span>
+            <strong id="animationStatus">Berjalan</strong>
+          </div>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="canvas" width="900" height="520">
+          </canvas>
+        </div>
+
+        <div class="help-grid">
+          <article class="card">
+            <strong>Gerakkan Kotak</strong>
+            <p>Tahan <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> atau tombol panah. Gerakan diagonal juga didukung.</p>
+          </article>
+          <article class="card">
+            <strong>Aksi Cepat</strong>
+            <p><kbd>C</kbd> ganti warna, <kbd>R</kbd> reset posisi, dan <kbd>Space</kbd> jeda atau lanjutkan animasi.</p>
+          </article>
+          <article class="card">
+            <strong>Mini Challenge</strong>
+            <p>Klik lingkaran bergerak untuk menambah skor. Bola akan berubah arah dan semakin cepat.</p>
+          </article>
+        </div>
+      </section>
+
+      <details class="practice-details">
+        <summary>Detail Praktikum</summary>
+        <div class="detail-content">
+          <section>
+            <h2>Deskripsi</h2>
+            <p>Praktikum ini memperkenalkan grafika komputer melalui HTML Canvas 2D. Gambar berasal dari data koordinat, ukuran, warna, dan bentuk yang diperbarui JavaScript lalu digambar kembali pada setiap frame.</p>
+            <p class="flow">CREATE CANVAS → DRAW PRIMITIVE → SET COLOR &amp; POSITION → ANIMATE → ADD INTERACTION</p>
+          </section>
+
+          <div class="detail-grid">
+            <article class="card">
+              <strong>Canvas &amp; Koordinat</strong>
+              <p>Titik <code>(0, 0)</code> berada di kiri atas. Nilai x bertambah ke kanan dan y bertambah ke bawah.</p>
+            </article>
+            <article class="card">
+              <strong>Primitive &amp; Geometry</strong>
+              <p>Rectangle, line, circle, dan triangle dibentuk dari posisi titik, ukuran, radius, garis, serta warna.</p>
+            </article>
+            <article class="card">
+              <strong>Animasi Berbasis Frame</strong>
+              <p><code>requestAnimationFrame()</code> menjalankan update dan draw berulang agar objek terlihat bergerak.</p>
+            </article>
+            <article class="card">
+              <strong>Interaksi Pengguna</strong>
+              <p>Mouse menampilkan koordinat dan menangkap bola. Keyboard mengontrol objek dan animasi.</p>
+            </article>
+          </div>
+
+          <section>
+            <h2>Pola Input Keyboard</h2>
+            <ul>
+              <li><strong>Event-based:</strong> C, R, dan Space menjalankan satu aksi setiap kali ditekan.</li>
+              <li><strong>State-based:</strong> Arrow atau WASD menggerakkan kotak selama tombol ditahan.</li>
+              <li><strong>Boundary checking:</strong> objek dibatasi agar tidak hilang dari canvas.</li>
+            </ul>
+            <p class="flow">USER INPUT → UPDATE DATA → DRAW FRAME → DISPLAY → REPEAT</p>
+          </section>
+
+          <section>
+            <h2>Challenge &amp; Pengujian</h2>
+            <p>Challenge <strong>Tangkap Bola</strong> menambah skor, mengubah warna, arah, dan kecepatan bola ketika berhasil diklik.</p>
+            <ul>
+              <li>Rectangle, line, circle, dan triangle tampil dengan warna berbeda.</li>
+              <li>Animasi, koordinat mouse, input keyboard, dan multi-key movement bekerja.</li>
+              <li>Boundary checking menjaga objek utama tetap berada di dalam canvas.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Graphics Pipeline</h2>
+            <p><strong>DATA → COORDINATE → PRIMITIVE → DRAWING → FRAME → PIXEL / IMAGE.</strong> Alur ini menjadi pengantar menuju WebGL pada pertemuan berikutnya.</p>
+          </section>
+        </div>
+      </details>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
