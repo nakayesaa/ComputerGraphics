@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Playground interaktif transformasi 2D menggunakan WebGL2 dan Model Matrix 3×3.">
+    <meta name="theme-color" content="#071512">
+    <title>Transform Lab — Praktikum 03</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071512'/%3E%3Cpath d='M14 19h36L32 51z' fill='%23e86f51'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#playground">Lewati ke playground</a>
+
+    <main id="playground" class="playground">
+      <section class="viewport-panel" aria-labelledby="viewport-title">
+        <header class="panel-header">
+          <div>
+            <p class="section-label">Live viewport</p>
+            <h2 id="viewport-title">Coordinate space</h2>
+          </div>
+          <div class="legend" aria-label="Legenda objek">
+            <span><i class="swatch swatch-a"></i>A · aktif</span>
+            <span><i class="swatch swatch-compare"></i>A · pembanding</span>
+            <span><i class="swatch swatch-b"></i>B · otomatis</span>
+          </div>
+        </header>
+
+        <div class="canvas-shell" id="canvasShell">
+          <canvas id="glCanvas" tabindex="0" aria-label="Scene WebGL2 dengan dua objek dan sumbu koordinat"></canvas>
+          <div id="objectALabel" class="object-label label-a" aria-hidden="true">A · aktif</div>
+          <div id="compareLabel" class="object-label label-compare" aria-hidden="true">urutan lain</div>
+          <span class="axis-label axis-x" aria-hidden="true">+X</span>
+          <span class="axis-label axis-y" aria-hidden="true">+Y</span>
+          <span class="origin-label" aria-hidden="true">0,0</span>
+          <p id="webglError" class="webgl-error" hidden>Browser ini tidak mendukung WebGL2.</p>
+        </div>
+
+        <footer class="viewport-footer">
+          <span><b>Tip:</b> tahan beberapa tombol sekaligus untuk komposisi transformasi.</span>
+          <span id="pointerStatus">Drag canvas untuk translation</span>
+        </footer>
+      </section>
+
+      <aside class="control-panel" aria-label="Kontrol dan HUD transformasi">
+        <section class="hud" aria-labelledby="hud-title">
+          <div class="hud-heading">
+            <div>
+              <p class="section-label">Object A</p>
+              <h2 id="hud-title">Transform HUD</h2>
+            </div>
+            <span class="live-indicator">live</span>
+          </div>
+
+          <dl class="telemetry" aria-live="polite">
+            <div>
+              <dt>Position</dt>
+              <dd><span id="positionX">0.0</span><small>x</small> <span id="positionY">0.0</span><small>y</small></dd>
+            </div>
+            <div>
+              <dt>Rotation</dt>
+              <dd><span id="rotation">0.0°</span></dd>
+            </div>
+            <div>
+              <dt>Scale</dt>
+              <dd><span id="scaleX">1.00</span><small>x</small> <span id="scaleY">1.00</span><small>y</small></dd>
+            </div>
+          </dl>
+
+          <div class="order-readout">
+            <span>Urutan aktif</span>
+            <strong id="orderValue">T · R · S</strong>
+            <small id="orderDescription">scale → rotate → translate</small>
+          </div>
+
+          <div class="quick-actions" aria-label="Aksi cepat">
+            <button type="button" data-action="reset"><kbd>R</kbd> Reset</button>
+            <button type="button" data-action="order"><kbd>T</kbd> Tukar urutan</button>
+          </div>
+        </section>
+
+        <section class="presets" aria-labelledby="preset-title">
+          <div class="section-row">
+            <h3 id="preset-title">Transform presets</h3>
+            <span>pilih cepat</span>
+          </div>
+          <div class="preset-grid">
+            <button type="button" data-preset="1"><kbd>1</kbd><span>Neutral</span></button>
+            <button type="button" data-preset="2"><kbd>2</kbd><span>Orbit</span></button>
+            <button type="button" data-preset="3"><kbd>3</kbd><span>Stretch</span></button>
+          </div>
+        </section>
+
+        <section class="controls" aria-labelledby="controls-title">
+          <div class="section-row">
+            <h3 id="controls-title">Keyboard controls</h3>
+            <span>tahan tombol</span>
+          </div>
+          <ul>
+            <li><span>Translation</span><span class="key-group"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span></li>
+            <li><span>Rotation</span><span class="key-group"><kbd>Q</kbd><kbd>E</kbd></span></li>
+            <li><span>Uniform scale</span><span class="key-group"><kbd>−</kbd><kbd>+</kbd></span></li>
+            <li><span>Scale X</span><span class="key-group"><kbd>Z</kbd><kbd>X</kbd></span></li>
+            <li><span>Scale Y</span><span class="key-group"><kbd>C</kbd><kbd>V</kbd></span></li>
+          </ul>
+        </section>
+
+        <section class="auto-status" aria-label="Status Object B">
+          <span class="auto-mark">B</span>
+          <div>
+            <strong>Automatic motion</strong>
+            <p id="objectBStatus">rotation 0.0° · scale 1.00 × 1.00</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="matrix3.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
