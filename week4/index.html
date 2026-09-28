@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Rotating 3D Cube Camera Playground dengan WebGL2.">
+    <title>Week 4 · Grafika Komputer</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">EF234504 · Grafika Komputer · Praktikum 4</p>
+          <h1>Week 4</h1>
+          <p class="subtitle">Camera, projection, clipping plane, dan depth test dalam satu WebGL2 playground.</p>
+        </div>
+        <button id="resetButton" class="button secondary" type="button">Reset <kbd>R</kbd></button>
+      </header>
+
+      <section class="workspace">
+        <div class="viewport-panel">
+          <canvas id="glCanvas" aria-label="WebGL2 rotating cube viewport"></canvas>
+          <div id="canvasMessage" class="canvas-message" hidden></div>
+          <div class="viewport-labels" aria-hidden="true">
+            <span id="leftViewLabel"></span>
+            <span id="rightViewLabel"></span>
+          </div>
+        </div>
+
+        <aside class="control-panel">
+          <section>
+            <p class="section-label">Live HUD</p>
+            <dl class="hud">
+              <div><dt>Camera</dt><dd id="cameraValue">—</dd></div>
+              <div><dt>Target</dt><dd id="targetValue">—</dd></div>
+              <div><dt>Projection</dt><dd id="projectionValue">—</dd></div>
+              <div><dt>FOV</dt><dd id="fovValue">—</dd></div>
+              <div><dt>Near / Far</dt><dd id="clipValue">—</dd></div>
+              <div><dt>Depth test</dt><dd id="depthValue">—</dd></div>
+            </dl>
+          </section>
+
+          <section>
+            <p class="section-label">Projection</p>
+            <div class="button-grid two">
+              <button id="projectionButton" class="button" type="button">Toggle projection <kbd>P</kbd></button>
+              <button id="splitButton" class="button" type="button">Split view <kbd>V</kbd></button>
+            </div>
+          </section>
+
+          <section>
+            <div class="control-heading">
+              <p class="section-label">Field of View</p>
+              <output id="fovOutput" for="fovSlider">60°</output>
+            </div>
+            <input id="fovSlider" type="range" min="25" max="100" step="1" value="60">
+            <div class="preset-row" aria-label="FOV presets">
+              <button class="chip" data-fov="35" type="button">35°</button>
+              <button class="chip active" data-fov="60" type="button">60°</button>
+              <button class="chip" data-fov="90" type="button">90°</button>
+            </div>
+          </section>
+
+          <section>
+            <p class="section-label">Render Settings</p>
+            <div class="button-grid two">
+              <button id="clipButton" class="button" type="button">Clip preset <kbd>N</kbd></button>
+              <button id="depthButton" class="button" type="button">Depth test <kbd>D</kbd></button>
+              <button id="orbitButton" class="button wide" type="button">Auto orbit <kbd>O</kbd></button>
+            </div>
+          </section>
+
+          <details>
+            <summary>Controls</summary>
+            <ul class="controls-list">
+              <li><span>Camera X / Y</span><kbd>Arrow keys</kbd></li>
+              <li><span>Camera Z</span><kbd>W</kbd> <kbd>S</kbd></li>
+              <li><span>Target X / Y</span><kbd>J</kbd><kbd>L</kbd> / <kbd>I</kbd><kbd>K</kbd></li>
+              <li><span>Orbit manually</span><kbd>Q</kbd> <kbd>E</kbd></li>
+              <li><span>FOV</span><kbd>[</kbd> <kbd>]</kbd></li>
+            </ul>
+          </details>
+        </aside>
+      </section>
+
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
