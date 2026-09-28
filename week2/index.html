@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="WebGL2 Primitive Playground untuk Praktikum Grafika Komputer Week 2.">
+    <title>Week 2 · WebGL Primitive Playground</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">EF234504 · Grafika Komputer · Praktikum 2</p>
+          <h1>Week 2</h1>
+          <p>WebGL2 Primitive Playground</p>
+        </div>
+        <button id="resetButton" class="button" type="button">Reset <kbd>R</kbd></button>
+      </header>
+
+      <section class="workspace">
+        <div class="canvas-panel">
+          <canvas id="glCanvas" aria-label="WebGL2 primitive playground"></canvas>
+          <p id="errorMessage" class="error" hidden></p>
+        </div>
+
+        <aside class="sidebar">
+          <section>
+            <p class="section-label">Live HUD</p>
+            <dl class="hud">
+              <div><dt>Draw mode</dt><dd id="modeValue">Solid</dd></div>
+              <div><dt>Animation</dt><dd id="animationValue">Running</dd></div>
+              <div><dt>Triangle</dt><dd id="triangleValue">0.00, 0.22</dd></div>
+              <div><dt>Pointer</dt><dd id="pointerValue">—</dd></div>
+            </dl>
+          </section>
+
+          <section>
+            <p class="section-label">Draw mode</p>
+            <div class="mode-buttons">
+              <button class="button active" data-mode="solid" type="button">Solid <kbd>1</kbd></button>
+              <button class="button" data-mode="wireframe" type="button">Wireframe <kbd>2</kbd></button>
+              <button class="button" data-mode="points" type="button">Points <kbd>3</kbd></button>
+            </div>
+          </section>
+
+          <section>
+            <p class="section-label">Interaction</p>
+            <ul class="control-list">
+              <li><span>Move triangle</span><kbd>Arrow keys</kbd></li>
+              <li><span>Place triangle</span><kbd>Mouse click</kbd></li>
+              <li><span>Pause animation</span><kbd>Space</kbd></li>
+              <li><span>Reset</span><kbd>R</kbd></li>
+            </ul>
+          </section>
+
+          <section class="pipeline">
+            <p class="section-label">WebGL flow</p>
+            <ol>
+              <li>Vertex data</li>
+              <li>Buffer</li>
+              <li>GLSL shader</li>
+              <li>Attribute</li>
+              <li>Draw call</li>
+            </ol>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
