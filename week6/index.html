@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EF234504 Grafika Komputer - Praktikum 6: Mini 3D Scene Monochrome Black & White" />
+    <title>Week 6 · Three.js 3D Scene (Monochrome)</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- 3D Canvas Viewport -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Top Navigation & Controls Bar -->
+    <header class="top-nav">
+      <!-- Brand -->
+      <div class="nav-brand">
+        <span class="brand-badge">EF234504</span>
+        <span class="brand-title">THREE.JS</span>
+      </div>
+
+      <!-- Controls Group -->
+      <div class="nav-controls">
+        <!-- 1. Play / Pause -->
+        <button id="btn-toggle-anim" class="nav-btn" title="Toggle Animasi (Shortcut: Space)">
+          <span class="btn-icon">⏸</span>
+          <span class="btn-text">Pause</span>
+        </button>
+
+        <!-- 2. Camera Toggle (Perspective / Ortho) -->
+        <button id="btn-camera-toggle" class="nav-btn" title="Ganti Mode Kamera (Shortcut: C)">
+          <span class="btn-icon">📷</span>
+          <span id="label-camera-mode" class="btn-text">Persp</span>
+        </button>
+
+        <!-- Camera Views -->
+        <div class="nav-select-wrapper" title="Preset Sudut Pandang">
+          <select id="select-camera-preset" class="nav-select">
+            <option value="default">View: Default</option>
+            <option value="top">View: Top</option>
+            <option value="front">View: Front</option>
+            <option value="side">View: Side</option>
+          </select>
+        </div>
+
+        <div class="nav-divider"></div>
+
+        <!-- 3. Sun Orbit Toggle -->
+        <button id="btn-sun-orbit" class="nav-btn active" title="Toggle Orbit Matahari (Shortcut: L)">
+          <span class="btn-icon">☀️</span>
+          <span class="btn-text">Sun Orbit</span>
+        </button>
+
+        <!-- 4. Shadow Quality -->
+        <div class="nav-select-wrapper" title="Kualitas Bayangan">
+          <select id="select-shadow-res" class="nav-select">
+            <option value="512">Shadow: 512</option>
+            <option value="1024">Shadow: 1024</option>
+            <option value="2048" selected>Shadow: 2048</option>
+            <option value="4096">Shadow: 4096</option>
+          </select>
+        </div>
+
+        <!-- 5. Material Gallery Dropdown -->
+        <div class="nav-select-wrapper" title="Ganti Material Objek Terpilih">
+          <select id="select-material-gallery" class="nav-select">
+            <option value="Standard" selected>Mat: Standard</option>
+            <option value="Physical">Mat: Physical</option>
+            <option value="Phong">Mat: Phong</option>
+            <option value="Lambert">Mat: Lambert</option>
+            <option value="Toon">Mat: Toon</option>
+            <option value="Normal">Mat: Normal</option>
+            <option value="Basic">Mat: Basic</option>
+          </select>
+        </div>
+
+        <!-- 6. Target Object Selector & Reset -->
+        <div class="nav-select-wrapper" title="Pilih Objek untuk Dikontrol">
+          <select id="select-target-object" class="nav-select">
+            <!-- Populated via JavaScript -->
+          </select>
+        </div>
+
+        <button id="btn-reset-transform" class="nav-btn" title="Reset Posisi Objek (Shortcut: R)">
+          <span class="btn-icon">↺</span>
+          <span class="btn-text">Reset</span>
+        </button>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="nav-right">
+        <!-- Compact Status Pill -->
+        <div class="status-pill">
+          <span id="hud-fps-badge" class="fps-text">60 FPS</span>
+          <span class="status-separator">•</span>
+          <span id="hud-mesh-count" class="mesh-text">8 Meshes</span>
+        </div>
+
+        <!-- Screenshot Button -->
+        <button id="btn-screenshot" class="nav-btn nav-btn-primary" title="Unduh Screenshot PNG">
+          <span class="btn-icon">📸</span>
+          <span class="btn-text">Capture</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Floating Minimal Bottom Bar for Interaction & Shortcuts -->
+    <div class="bottom-helper">
+      <div class="helper-item"><kbd>Klik Objek</kbd> Pilih</div>
+      <div class="helper-separator">•</div>
+      <div class="helper-item"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Gerak X/Z</div>
+      <div class="helper-separator">•</div>
+      <div class="helper-item"><kbd>Q</kbd><kbd>E</kbd> Naik/Turun Y</div>
+      <div class="helper-separator">•</div>
+      <div class="helper-item"><kbd>Space</kbd> Pause</div>
+      <div class="helper-separator">•</div>
+      <div class="helper-item"><kbd>C</kbd> Kamera</div>
+      <div class="helper-separator">•</div>
+      <div class="helper-item"><kbd>L</kbd> Sun Orbit</div>
+      <div class="helper-separator">•</div>
+      <div class="helper-item" id="active-object-indicator">Aktif: Center Sphere</div>
+    </div>
+
+    <!-- Main Module Script -->
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
