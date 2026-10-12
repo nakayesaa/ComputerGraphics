@@ -194,5 +194,6 @@ Proyek ini mengimplementasikan **seluruh 8 challenge** secara lengkap:
 ## 📸 Screenshot Hasil & Video Demo
 
 - **Screenshot:** Tersedia pada berkas `screenshot.png` di folder ini (atau tekan tombol **Capture** di Top Bar).
+- **Link Live Demo (GitHub Pages):** [https://nakayesaa.github.io/ComputerGraphics/week6/](https://nakayesaa.github.io/ComputerGraphics/week6/)
 - **Link Video Demo:** *(Tambahkan tautan video demo sebelum pengumpulan)*
 - **Link Repository GitHub:** [https://github.com/nakayesaa/ComputerGraphics](https://github.com/nakayesaa/ComputerGraphics)
