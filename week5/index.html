@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Week 5 · Texture & Lighting</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a href="../week6/">GRAFIKA KOMPUTER</a><span>05 / Texture & Lighting</span><button id="reset">Reset · R</button></header>
+<main>
+<section class="viewport"><canvas id="canvas" aria-label="Kubus bertekstur dengan pencahayaan WebGL2" tabindex="0"></canvas><p class="caption">Drag untuk orbit kamera · Scroll untuk zoom</p><p id="error" role="alert" hidden></p><span class="technical">WEBGL2 / DEPTH TEST ON</span></section>
+<aside>
+<h1>Texture & light.</h1><p class="intro">EF234504 · Praktikum 5</p>
+<section><h2>Lighting</h2><label>Mode <select id="mode"><option value="0">All Components · 5</option><option value="1">Ambient Only · 1</option><option value="2">Diffuse Only · 2</option><option value="3">Specular Only · 3</option><option value="4">Ambient + Diffuse · 4</option></select></label>
+<label>Ambient strength <select id="ambient"><option>0</option><option selected>0.2</option><option>0.5</option></select></label>
+<label>Shininess <select id="shininess"><option>4</option><option selected>32</option><option>128</option></select></label>
+<label>Light position <output id="light"></output></label><div class="axes" aria-label="Kontrol posisi light"></div></section>
+<section><h2>Texture</h2><label>Asset <select id="texture"><option value="0">Checker</option><option value="1">Grid</option></select></label><label>Filtering <button id="filter">LINEAR · F</button></label><label>Wrapping <button id="wrap">REPEAT · W</button></label><label>UV scale <input id="uv" type="range" min="1" max="4" step="0.25" value="2"><output id="uvValue">2</output></label></section>
+<section><h2>Challenges</h2><label>Moving light <input id="moving" type="checkbox"></label><label>Light marker <input id="marker" type="checkbox" checked></label><p id="challenges" class="note"></p></section>
+<button id="pause">Pause rotation · Space</button>
+<details><summary>Keyboard controls</summary><p>J / L: light X · I / K: light Y · U / O: light Z<br>1–5: lighting mode · F: filtering · W: wrapping<br>M: moving light · T: texture · Space: rotation · R: reset</p></details>
+</aside></main><footer>Hajendra Herlambang / 5025241101 <a href="https://github.com/nakayesaa/ComputerGraphics/tree/gh-pages/week5">Source ↗</a></footer>
+<script type="module" src="main.js"></script></body></html>
