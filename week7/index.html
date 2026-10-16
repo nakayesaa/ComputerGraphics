@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,"><title>Week 7 · Interactive Studio</title>
+  <script type="module" crossorigin src="./assets/index-Br7lDuI6.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BJs07qB4.css">
+</head>
+<body>
+  <header><span class="brand">GRAFIKA KOMPUTER</span><span>07 / Interactive Studio</span><button id="reset">Reset view</button></header>
+  <main>
+    <section class="viewport" aria-label="Studio 3D interaktif">
+      <canvas id="canvas" tabindex="0" aria-label="Orbit kamera dengan drag, klik robot atau objek untuk memilih"></canvas>
+      <span class="viewport-label">THREE.JS / PBR / SHADOWS</span>
+      <p id="status" role="status">Memuat RobotExpressive.glb…</p>
+      <p class="help">Drag untuk orbit · Scroll untuk zoom · Klik ruang kosong untuk batal memilih</p>
+      <div class="object-labels" aria-hidden="true"><span>01 / ROBOT</span><span>02 / MATERIAL STUDIES</span></div>
+    </section>
+    <aside>
+      <h1>Interactive studio.</h1><p class="intro">EF234504 · Praktikum 7</p>
+      <section><h2>Selection</h2>
+        <label>Object <select id="object"><option value="">Tidak ada</option></select></label>
+        <dl><div><dt>Selected</dt><dd id="selected">Tidak ada</dd></div><div><dt>Hover</dt><dd id="hover">—</dd></div><div><dt>Hit mesh</dt><dd id="hit">—</dd></div><div><dt>Parent</dt><dd id="parent">—</dd></div><div><dt>Local XYZ</dt><dd id="local">—</dd></div><div><dt>World XYZ</dt><dd id="world">—</dd></div></dl>
+        <label>Rotate selected <input id="rotate" type="checkbox"></label>
+      </section>
+      <section><h2>Animation & hierarchy</h2>
+        <label>Robot clip <select id="clip" disabled><option>Loading…</option></select></label>
+        <button id="play">Pause animation · Space</button>
+        <label>Rotate parent group <input id="group" type="checkbox"></label>
+        <p class="note">Putar parent: local XYZ tetap, world XYZ berubah. Robot dan dua objek adalah child dari StudioGroup.</p>
+      </section>
+      <section><h2>PBR material</h2>
+        <label>Roughness <input id="roughness" type="range" min="0" max="1" step="0.01" value="0.35"><output id="roughnessValue">—</output></label>
+        <label>Metalness <input id="metalness" type="range" min="0" max="1" step="0.01" value="0.65"><output id="metalnessValue">—</output></label>
+        <label>Studio environment <input id="environment" type="checkbox" checked></label>
+        <p class="note" id="materialNote">Pilih objek untuk mengubah material.</p>
+      </section>
+      <details><summary>Scene graph & controls</summary><pre id="tree">Scene
+├ Ground
+└ StudioGroup (Group)
+  ├ RobotRoot → GLB → meshes / bones
+  ├ Chrome sphere
+  └ Matte knot</pre><p>Hover: emissive putih · Pilihan: ring putih<br>Space: play/pause · Esc: clear selection<br>Panel, clip, hover, rotasi pilihan, environment: challenge aktif.</p></details>
+    </aside>
+  </main>
+  <footer><span>Hajendra Herlambang / 5025241101</span><a href="https://github.com/nakayesaa/ComputerGraphics/tree/main/week7">Source ↗</a></footer>
+</body>
+</html>
