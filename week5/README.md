@@ -4,7 +4,7 @@
 - NRP: 5025241101
 - Mata kuliah: EF234504 · Grafika Komputer
 - Aplikasi: https://nakayesaa.github.io/ComputerGraphics/week5/
-- Repository: https://github.com/nakayesaa/ComputerGraphics/tree/gh-pages/week5
+- Repository: https://github.com/nakayesaa/ComputerGraphics/tree/main/week5
 
 ## Menjalankan
 
