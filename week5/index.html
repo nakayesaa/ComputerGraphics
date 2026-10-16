@@ -1,128 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="EF234504 Grafika Komputer - Praktikum 5: WebGL2 Textured & Lit Object" />
-    <title>Week 5 · WebGL2 Textured & Lit Object</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- WebGL2 Viewport Canvas -->
-    <canvas id="glCanvas"></canvas>
-
-    <!-- Top Navigation Bar -->
-    <header class="top-nav">
-      <div class="nav-brand">
-        <span class="brand-badge">EF234504</span>
-        <span class="brand-title">LIGHT & TEX</span>
-      </div>
-
-      <div class="nav-controls">
-        <!-- 1. Lighting Mode Comparison -->
-        <div class="nav-select-wrapper" title="Mode Pencahayaan (Shortcut: 1-5)">
-          <select id="select-lighting-mode" class="nav-select">
-            <option value="0" selected>Light: All</option>
-            <option value="1">Ambient (1)</option>
-            <option value="2">Diffuse (2)</option>
-            <option value="3">Specular (3)</option>
-            <option value="4">Amb+Diff (4)</option>
-          </select>
-        </div>
-
-        <!-- 2. Moving Light Toggle -->
-        <button id="btn-toggle-orbit" class="nav-btn active" title="Toggle Animasi Orbit Cahaya (Shortcut: M)">
-          <span class="btn-icon">☀️</span>
-          <span class="btn-text">Moving</span>
-        </button>
-
-        <!-- 3. Texture Filtering Toggle -->
-        <button id="btn-toggle-filter" class="nav-btn active" title="Toggle Filtering LINEAR / NEAREST (Shortcut: F)">
-          <span class="btn-icon">🔍</span>
-          <span id="label-filter" class="btn-text">LINEAR</span>
-        </button>
-
-        <!-- 4. Texture Wrapping Selector -->
-        <div class="nav-select-wrapper" title="Texture Wrapping Mode (Shortcut: W)">
-          <select id="select-wrapping-mode" class="nav-select">
-            <option value="REPEAT" selected>Wrap: REPEAT</option>
-            <option value="CLAMP_TO_EDGE">Wrap: CLAMP</option>
-            <option value="MIRRORED_REPEAT">Wrap: MIRROR</option>
-          </select>
-        </div>
-
-        <!-- 5. Multiple Textures Selector (Challenge) -->
-        <div class="nav-select-wrapper" title="Pilih Texture (Challenge)">
-          <select id="select-texture" class="nav-select">
-            <option value="checker" selected>Tex: Checker</option>
-            <option value="grid">Tex: Grid</option>
-            <option value="brick">Tex: Brick</option>
-            <option value="dots">Tex: Dots</option>
-          </select>
-        </div>
-
-        <!-- 6. Ambient Strength -->
-        <div class="nav-select-wrapper" title="Ambient Strength (Eksperimen: 0, 0.2, 0.5)">
-          <select id="select-ambient" class="nav-select">
-            <option value="0.0">Amb: 0</option>
-            <option value="0.2" selected>Amb: 0.2</option>
-            <option value="0.5">Amb: 0.5</option>
-          </select>
-        </div>
-
-        <!-- 7. Shininess -->
-        <div class="nav-select-wrapper" title="Specular Shininess (Eksperimen: 4, 32, 128)">
-          <select id="select-shininess" class="nav-select">
-            <option value="4.0">Shine: 4</option>
-            <option value="32.0" selected>Shine: 32</option>
-            <option value="128.0">Shine: 128</option>
-          </select>
-        </div>
-
-        <!-- 8. Challenges: Grayscale, UV Scroll, Reset -->
-        <button id="btn-toggle-gray" class="nav-btn" title="Toggle Grayscale Shader (Shortcut: G)">
-          <span class="btn-text">Mono</span>
-        </button>
-
-        <button id="btn-toggle-scroll" class="nav-btn" title="Toggle UV Scrolling Animation">
-          <span class="btn-text">Scroll</span>
-        </button>
-
-        <button id="btn-reset" class="nav-btn" title="Reset Parameter & Posisi (Shortcut: R)">
-          <span class="btn-icon">↺</span>
-          <span class="btn-text">Reset</span>
-        </button>
-      </div>
-
-      <!-- Right HUD Pill -->
-      <div class="nav-right">
-        <div class="status-pill">
-          <span id="hud-light-pos" class="hud-pos">L: 2.2, 1.8, 2.0</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- Bottom Helper / Shortcuts Legend -->
-    <div class="bottom-helper">
-      <div class="helper-item"><kbd>J</kbd><kbd>L</kbd> Light X</div>
-      <div class="helper-separator">•</div>
-      <div class="helper-item"><kbd>I</kbd><kbd>K</kbd> Light Y</div>
-      <div class="helper-separator">•</div>
-      <div class="helper-item"><kbd>U</kbd><kbd>O</kbd> Light Z</div>
-      <div class="helper-separator">•</div>
-      <div class="helper-item"><kbd>1-4</kbd> Light Mode</div>
-      <div class="helper-separator">•</div>
-      <div class="helper-item"><kbd>F</kbd> Filter</div>
-      <div class="helper-separator">•</div>
-      <div class="helper-item"><kbd>W</kbd> Wrap</div>
-      <div class="helper-separator">•</div>
-      <div class="helper-item"><kbd>Drag</kbd> Rotate Cube</div>
-    </div>
-
-    <!-- Main Module Script -->
-    <script type="module" src="./main.js"></script>
-  </body>
-</html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Week 5 · Texture & Lighting</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a href="../week6/">GRAFIKA KOMPUTER</a><span>05 / Texture & Lighting</span><button id="reset">Reset · R</button></header>
+<main>
+<section class="viewport"><canvas id="canvas" aria-label="Kubus bertekstur dengan pencahayaan WebGL2" tabindex="0"></canvas><p class="caption">Drag untuk orbit kamera · Scroll untuk zoom</p><p id="error" role="alert" hidden></p><span class="technical">WEBGL2 / DEPTH TEST ON</span></section>
+<aside>
+<h1>Texture & light.</h1><p class="intro">EF234504 · Praktikum 5</p>
+<section><h2>Lighting</h2><label>Mode <select id="mode"><option value="0">All Components · 5</option><option value="1">Ambient Only · 1</option><option value="2">Diffuse Only · 2</option><option value="3">Specular Only · 3</option><option value="4">Ambient + Diffuse · 4</option></select></label>
+<label>Ambient strength <select id="ambient"><option>0</option><option selected>0.2</option><option>0.5</option></select></label>
+<label>Shininess <select id="shininess"><option>4</option><option selected>32</option><option>128</option></select></label>
+<label>Light position <output id="light"></output></label><div class="axes" aria-label="Kontrol posisi light"></div></section>
+<section><h2>Texture</h2><label>Asset <select id="texture"><option value="0">Checker</option><option value="1">Grid</option></select></label><label>Filtering <button id="filter">LINEAR · F</button></label><label>Wrapping <button id="wrap">REPEAT · W</button></label><label>UV scale <input id="uv" type="range" min="1" max="4" step="0.25" value="2"><output id="uvValue">2</output></label></section>
+<section><h2>Challenges</h2><label>Moving light <input id="moving" type="checkbox"></label><label>Light marker <input id="marker" type="checkbox" checked></label><p id="challenges" class="note"></p></section>
+<button id="pause">Pause rotation · Space</button>
+<details><summary>Keyboard controls</summary><p>J / L: light X · I / K: light Y · U / O: light Z<br>1–5: lighting mode · F: filtering · W: wrapping<br>M: moving light · T: texture · Space: rotation · R: reset</p></details>
+</aside></main><footer>Hajendra Herlambang / 5025241101 <a href="https://github.com/nakayesaa/ComputerGraphics/tree/main/week5">Source ↗</a></footer>
+<script type="module" src="main.js"></script></body></html>

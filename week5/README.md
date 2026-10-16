@@ -1,160 +1,90 @@
-# Praktikum 05 — WebGL2 Textured & Lit Object Playground
+# Praktikum 05 — WebGL Textured & Lit Object Playground
 
-WebGL2 scene dengan kubus 3D bertekstur menggunakan pencahayaan Phong (Ambient + Diffuse + Specular). Texture sampling via UV buffer, kontrol cahaya interaktif, dan empat challenge tambahan.
+- Nama: Hajendra Herlambang
+- NRP: 5025241101
+- Mata kuliah: EF234504 · Grafika Komputer
+- Aplikasi: https://nakayesaa.github.io/ComputerGraphics/week5/
+- Repository: https://github.com/nakayesaa/ComputerGraphics/tree/main/week5
 
----
+## Menjalankan
 
-## Identitas
+Tanpa dependency dan build step. Dari root repository:
 
-- **Nama:** Hajendra Herlambang
-- **NRP:** 5025241101
-- **Mata Kuliah:** EF234504 — Grafika Komputer (Praktikum 5)
-
----
-
-## Deskripsi Scene
-
-Kubus 3D dengan 36 vertex (6 sisi × 2 segitiga). Setiap vertex memiliki Position Buffer, Normal Buffer, dan UV Buffer. Pencahayaan Phong Blinn dihitung seluruhnya di fragment shader dengan posisi kamera sebagai input specular. Light marker (kubus putih kecil) bergerak mengikuti posisi cahaya.
-
----
-
-## Cara Menjalankan
-
-Tidak ada build step. Jalankan static HTTP server dari folder `week5/`:
-
-```bash
-python -m http.server 8000
+```sh
+python3 -m http.server 8000
 ```
 
-Lalu buka `http://localhost:8000` pada browser yang mendukung WebGL2.
+Buka http://localhost:8000/week5/ dengan browser yang mendukung WebGL2. Gunakan HTTP agar modul, shader, dan texture dapat dimuat.
 
----
+## Implementasi
+
+Cube melanjutkan konsep model/view/projection Week 4. Terdapat 36 vertex dengan position, normal, dan UV buffer terpisah; normal per sisi mempertahankan sudut tajam. Cube berputar dengan delta time, perspective mengikuti ukuran canvas, depth test selalu aktif, dan color/depth buffer dibersihkan setiap frame.
+
+Vertex shader menghitung posisi world dan inverse-transpose normal matrix. Fragment shader mengambil warna dari `texture()` dan menghitung ambient, Lambert diffuse, serta Phong specular. Posisi light, posisi fragmen, normal, dan kamera berada dalam world space. Specular memakai `normalize(cameraPosition - fragmentPosition)` dan `reflect(-L, N)`, sehingga drag kamera mengubah highlight. Specular hanya aktif pada sisi yang menerima diffuse.
+
+Parameter awal: ambient **0.2**, shininess **32**, diffuse strength **0.75**, specular strength **0.8**, light putih pada **(2.5, 2.5, 3)**. Kamera dapat diorbit dan di-zoom. Mode perbandingan: Ambient Only, Diffuse Only, Specular Only, Ambient + Diffuse, All Components.
+
+Texture lokal `assets/checker.png` dan `assets/grid.png` berukuran 64×64, dibuat sendiri secara prosedural tanpa aset pihak ketiga. Seluruh sisi memakai UV 0–1, dikalikan UV scale awal **2**, sehingga wrapping dapat langsung diamati. LINEAR/NEAREST diterapkan pada MIN dan MAG; wrapping diterapkan pada S dan T. Tidak memakai mipmap agar perbandingan kedua filter langsung terlihat.
 
 ## Kontrol
 
-| Shortcut | Aksi |
-| :--- | :--- |
-| `J` / `L` | Light X (kiri / kanan) |
-| `I` / `K` | Light Y (atas / bawah) |
-| `U` / `O` | Light Z (dekat / jauh) |
-| `1` | Ambient Only |
-| `2` | Diffuse Only |
-| `3` | Specular Only |
-| `4` | Ambient + Diffuse |
-| `0` / `5` | All Components (Full Phong) |
-| `F` | Toggle Filter: LINEAR / NEAREST |
-| `W` | Cycle Wrap: REPEAT → CLAMP → MIRROR |
-| `M` | Toggle Moving Light Orbit |
-| `G` | Toggle Grayscale Shader |
-| `R` | Reset semua parameter |
-| Drag Mouse | Rotasi kubus |
+| Input | Fungsi |
+| --- | --- |
+| J / L | Light X − / + |
+| K / I | Light Y − / + |
+| O / U | Light Z − / + |
+| 1 / 2 / 3 | Ambient / Diffuse / Specular Only |
+| 4 / 5 | Ambient + Diffuse / All Components |
+| F | LINEAR ↔ NEAREST |
+| W | REPEAT → CLAMP_TO_EDGE → MIRRORED_REPEAT |
+| M | Moving light otomatis |
+| T | Ganti texture |
+| Space | Jeda / lanjut rotasi cube |
+| R | Reset semua parameter dan kamera |
+| Drag canvas / scroll | Orbit kamera / zoom |
 
----
+Panel menyediakan mode, preset ambient dan shininess, UV scale, texture, toggle challenge, dan tombol gerak light untuk mouse/touch. HUD menampilkan mode, light XYZ, ambient, shininess, filter, wrapping, serta challenge aktif. Shortcut tidak mengambil alih input saat kontrol form sedang fokus; klik canvas untuk kembali menggunakan shortcut. Gerak manual light mematikan moving light otomatis agar kedua kontrol tidak bertabrakan. Posisi light dibatasi −5 sampai 5 per sumbu.
 
-## Texture & Lighting Parameter
+## Challenge
 
-**Texture (Procedural, generated via Canvas 2D API):**
-- `Checker` — Papan catur monokrom 8×8
-- `Grid` — Tech grid dengan cincin lingkaran
-- `Brick` — Pola batu bata abu-abu
-- `Dots` — Halftone dot matrix
+1. **Moving light otomatis:** orbit light pada XZ, tinggi 2.5; dapat ditoggle lewat M/panel.
+2. **Multiple textures:** dua texture lokal dapat diganti lewat T/dropdown.
+3. **Light position marker:** cube putih kecil tanpa lighting menunjukkan lokasi sumber cahaya, mengikuti light manual maupun otomatis, dengan depth test tetap aktif.
 
-**UV Scale:** 2.0 (1 tile terulang 2× per sisi → demonstrasi wrapping jelas)
+## Eksperimen dan pengamatan
 
-**Lighting:**
-- **Ambient:** `ambientStrength × lightColor`
-- **Diffuse:** `max(dot(N, L), 0) × lightColor`
-- **Specular (Blinn-Phong):** `pow(max(dot(N, H), 0), shininess) × lightColor`
-  - `H = normalize(lightDir + viewDir)` — bergantung posisi kamera
+Jeda rotasi dengan Space untuk membandingkan parameter pada orientasi yang sama. Gunakan All Components kecuali saat membandingkan komponen.
 
----
+| Eksperimen | Pengamatan |
+| --- | --- |
+| Ambient 0 / 0.2 / 0.5 | 0 menghilangkan pencahayaan dasar; sisi tanpa diffuse gelap. 0.2 menjaga detail texture pada sisi gelap. 0.5 membuat seluruh sisi lebih terang dan mengurangi kontras shading. |
+| Shininess 4 / 32 / 128 | 4 menghasilkan highlight lebar, 32 lebih terpusat, 128 sangat kecil dan tajam. Orbit kamera untuk mencari highlight; sisi yang tidak menghadap pantulan bisa sepenuhnya gelap pada Specular Only. |
+| NEAREST / LINEAR | NEAREST menunjukkan texel bertepi tajam dan lebih bergerigi pada sisi miring. LINEAR melembutkan peralihan antartexel. Zoom untuk melihat perbedaannya. |
+| Repeat / Clamp / Mirror | Pada UV scale 2, Repeat mengulang pola; Clamp memperpanjang warna tepi setelah UV 1; Mirror membalik pola setiap interval. Texture Grid membuat sambungan mirror lebih mudah diamati. |
+| Ambient Only | Texture mendapat intensitas seragam, tanpa arah cahaya atau highlight. |
+| Diffuse Only | Terang sisi mengikuti normal dan arah menuju light; sisi membelakangi light gelap. |
+| Specular Only | Hanya highlight putih yang terlihat; berubah saat kamera/light bergerak. |
+| Ambient + Diffuse / All | All menambahkan highlight ke texture dan shading yang sudah dibentuk ambient + diffuse. |
 
-## Hasil Eksperimen
+## Pemeriksaan
 
-### Ambient Strength
+Jalankan pemeriksaan buffer, normal, UV, dan matematika tanpa dependency:
 
-| Nilai | Pengamatan |
-| :--- | :--- |
-| `0.0` | Sisi gelap sepenuhnya hitam; tanpa fill light |
-| `0.2` | Sisi gelap masih tampak detail textur |
-| `0.5` | Scene terasa "flat", gradasi shadow berkurang |
-
-### Shininess
-
-| Nilai | Pengamatan |
-| :--- | :--- |
-| `4` | Highlight specular sangat lebar, hampir seperti diffuse |
-| `32` | Highlight sedang, tampak realistis matte-metallic |
-| `128` | Highlight sangat kecil dan tajam, kesan permukaan sangat licin |
-
-### Filtering
-
-| Mode | Pengamatan |
-| :--- | :--- |
-| `LINEAR` | Texture halus (bilinear interpolation), tepi kotak checker tidak jagged |
-| `NEAREST` | Texture pikselasi, tepi kotak sangat tajam dan kasar saat didekatkan |
-
-### Wrapping
-
-| Mode | Pengamatan |
-| :--- | :--- |
-| `REPEAT` | Texture tile berulang di luar range [0,1]; pola terlihat menerus |
-| `CLAMP_TO_EDGE` | Pixel tepi texture diregangkan; tidak ada perulangan |
-| `MIRRORED_REPEAT` | Setiap tile dicerminkan; pola terasa simetris dan halus |
-
-### Lighting Mode
-
-| Mode | Pengamatan |
-| :--- | :--- |
-| `Ambient` | Warna datar merata, tidak bergantung posisi cahaya |
-| `Diffuse` | Volume / bentuk 3D terlihat; highlight berubah saat cahaya bergerak |
-| `Specular` | Hanya highlight putih kecil; bergantung posisi kamera |
-| `All` | Kombinasi ketiganya; tampak paling realistis |
-
----
-
-## Challenge yang Dikerjakan
-
-1. **Moving Light Otomatis (Challenge: Moving light)** — Toggle `Moving` di top bar atau shortcut `M`. Cahaya mengorbit mengelilingi kubus secara sinusoidal (radius 2.4, dengan variasi Y), sehingga shadow dan highlight berubah dinamis.
-2. **Multiple Textures (Challenge: Multiple textures)** — Empat texture procedural yang dapat diganti real-time via dropdown `Tex`: Checker, Tech Grid, Brick, Dots. Semuanya dibuat via Canvas 2D API tanpa file eksternal.
-3. **Grayscale Shader (Challenge: Grayscale shader)** — Toggle `Mono`. Mengkonversi output warna menjadi grayscale di fragment shader menggunakan luminance: `gray = dot(color, vec3(0.299, 0.587, 0.114))`.
-4. **UV Scrolling (Challenge: UV scrolling)** — Toggle `Scroll`. Offset UV diperbarui setiap frame (`+0.25/s`) sehingga texture tampak bergerak / mengalir di atas permukaan kubus.
-5. **Light Position Marker (Challenge: Light position marker)** — Kubus putih kecil (unlit) dirender tepat di posisi `lightPos` sebagai visual indicator cahaya.
-
----
-
-## Struktur File
-
-```
-week5/
-├── index.html       # UI: top nav, HUD, bottom shortcuts
-├── style.css        # Monochrome B&W theme
-├── main.js          # WebGL2 core: shaders, VAO, render loop
-├── math3d.js        # Matrix math: perspective, lookAt, normalMatrix
-├── geometry.js      # Cube geometry (position, normal, UV) & light marker
-├── texture.js       # Procedural texture generator + GL texture utils
-├── screenshot.png   # Screenshot hasil render
-└── README.md
+```sh
+node --experimental-default-type=module week5/check.mjs
 ```
 
----
+Browser diuji pada Chromium dengan WebGL2: shader compile/link, lima mode lighting, input XYZ, preset ambient/shininess, perubahan visual filtering/wrapping, pergantian texture, moving light, marker, orbit kamera, reset, dan layout mobile. Console dan `gl.getError()` diperiksa. Screenshot aplikasi ada di bawah.
 
-## Kendala & Solusi
+## Kendala
 
-1. **Shadow Acne pada specular di sisi belakang kubus:** Ditangani dengan mengalikan `spec` dengan `0.0` jika `diff <= 0.0` — sisi yang tidak terkena diffuse tidak mendapat specular.
-2. **Texture wrapping tidak update saat ganti mode:** `gl.generateMipmap()` harus dipanggil setiap kali parameter wrapping diubah karena WebGL2 tidak secara otomatis mengupdate mipmap setelah `texParameteri`.
-3. **Light marker muncul sebagian di luar frame:** Diperbaiki dengan mendorong kamera lebih jauh (`z = 6.0`) dan memperkecil radius orbit menjadi 2.4.
+- UV 0–1 saja membuat wrapping sulit dibedakan: UV scale disediakan dengan default 2.
+- Highlight specular bisa tidak terlihat jika pantulan menjauhi kamera: orbit kamera dan preset shininess 4 membantu observasi.
+- Membuka lewat `file://` tidak mendukung pemuatan modul/shader dengan benar: gunakan server HTTP.
+- Bila WebGL2 atau aset gagal dimuat, pesan kesalahan ditampilkan pada viewport.
 
----
+## Screenshot dan pengumpulan
 
-## Screenshot
+![Week 5](screenshot.png)
 
-![Screenshot](./screenshot.png)
-
----
-
-## Tautan
-
-- **Live Demo:** [https://nakayesaa.github.io/ComputerGraphics/week5/](https://nakayesaa.github.io/ComputerGraphics/week5/)
-- **Repository:** [https://github.com/nakayesaa/ComputerGraphics](https://github.com/nakayesaa/ComputerGraphics)
-- **Video Demo:** *(tambahkan sebelum pengumpulan)*
+Video demo belum direkam. Tambahkan tautan video sebelum mengumpulkan ke Classroom; tunjukkan texture, kelima mode, light XYZ, orbit kamera, preset eksperimen, filtering, wrapping, dan ketiga challenge. Identitas di atas mengikuti README Week 4; bila dikerjakan berkelompok, lengkapi nama dan NRP anggota sebenarnya.
