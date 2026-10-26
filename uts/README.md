@@ -8,6 +8,8 @@ UTS EF234504 · Grafika Komputer. Kendalikan armada melalui multiplier gate, ast
 
 Main online: https://nakayesaa.github.io/ComputerGraphics/uts/play/
 
+![Screenshot utama VOIDFLEET: armada, gate, dan HUD dalam arena orbital](docs/screenshot.png)
+
 ## Menjalankan
 
 Node.js 20.19+. Jalankan dari folder `uts`:
@@ -29,10 +31,16 @@ A/D atau panah dan mouse/drag: steering. Klik/tap target: Raycaster dan damage. 
 
 Three.js, GLTF lokal, parent–child armada/kapal/engine, PBR, empat light, shadow, fog, dan background prosedural. Animasi kapal, asteroid, turret, dan boss; VFX bloom, laser, particles, dan pulse. `src/main.js` memuat scene dan gameplay; `src/rules.js` memuat aturan armada.
 
-Challenge: menjaga performa saat armada bertambah. Arena memakai 6 batch InstancedMesh, shadow 1024², pixel ratio maksimal 1.25, HUD 10 Hz, dan simulasi bertahap maksimal 1/60 detik. Collision memakai pusat formasi sebagai simplifikasi arcade.
+## Pembagian kontribusi
+
+Project dikerjakan individu. Hajendra Herlambang bertanggung jawab atas scene dan asset, gameplay dan interaksi, UI, VFX, pengujian, serta deployment; implementasi awal dibantu Codex.
+
+## Challenge
+
+Menjaga performa saat armada bertambah. Arena memakai 6 batch InstancedMesh, shadow 1024², pixel ratio maksimal 1.25, HUD 10 Hz, dan simulasi bertahap maksimal 1/60 detik. Collision memakai pusat formasi sebagai simplifikasi arcade.
 
 ## Asset credits
 
-Model kapal GLTF, objek prosedural, UI, VFX, dan audio sintetis dibuat untuk project ini; implementasi awal dibantu Codex. Three.js dan Vite berlisensi MIT.
+Kapal GLTF, objek prosedural, UI, VFX, dan audio sintetis dibuat untuk project ini; tidak ada model, tekstur, atau audio eksternal. [Three.js dan addons](https://github.com/mrdoob/three.js/blob/dev/LICENSE) serta [Vite](https://github.com/vitejs/vite/blob/main/LICENSE) berlisensi MIT.
 
 Video demo: [Isi link]. Repository: https://github.com/nakayesaa/ComputerGraphics/tree/main/uts
