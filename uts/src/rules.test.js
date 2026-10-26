@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { applyGate, fleetPosition, sectorAt } from "./rules.js";
+// Memastikan gate, batas armada, formasi, dan perpindahan sektor mengikuti aturan gameplay.
 test("fleet progression stays bounded, losses can end a run, formations remain unique", () => {
   assert.equal(applyGate(8, "multiply", 3), 24);
   assert.equal(applyGate(50, "multiply", 2), 60);

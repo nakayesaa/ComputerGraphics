@@ -6,8 +6,9 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
-import { applyGate, fleetPosition, sectorAt } from "./rules.js";
+import { MAX_FLEET, applyGate, fleetPosition, sectorAt } from "./rules.js";
 
+// Mengambil elemen antarmuka berdasarkan ID untuk memperbarui tampilan game.
 const $ = (id) => document.getElementById(id);
 const RUN_SPEED = 26;
 const mint = 0x70f8da,
@@ -32,7 +33,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.22;
-// A generated environment map gives PBR metals visible reflections.
+// Membentuk environment map agar permukaan logam mendapat pantulan yang lembut.
 const pmrem = new THREE.PMREMGenerator(renderer);
 const room = new RoomEnvironment();
 const environmentMap = pmrem.fromScene(room, 0.04);
@@ -72,8 +73,10 @@ scene.add(rim);
 const warm = new THREE.PointLight(0xe8d9c8, 30, 45, 2);
 warm.position.set(7, 5, -20);
 scene.add(warm);
+// Membuat material PBR yang merespons cahaya melalui metalness dan roughness.
 const pbr = (color, metalness = 0.5, roughness = 0.42) =>
   new THREE.MeshStandardMaterial({ color, metalness, roughness });
+// Membuat material bercahaya untuk mesin, laser, dan garis gate.
 const glow = (color) =>
   new THREE.MeshBasicMaterial({ color, toneMapped: false });
 const metal = pbr(0x38444f, 0.65, 0.45),
@@ -81,6 +84,7 @@ const metal = pbr(0x38444f, 0.65, 0.45),
   cyan = glow(mint),
   amber = glow(orange);
 const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+// Membuat balok dengan material, posisi, ukuran, dan pengaturan bayangan yang diberikan.
 function box(parent, material, x, y, z, sx, sy, sz) {
   const m = new THREE.Mesh(boxGeo, material);
   m.position.set(x, y, z);
@@ -92,7 +96,7 @@ function box(parent, material, x, y, z, sx, sy, sz) {
 }
 const environment = new THREE.Group();
 scene.add(environment);
-const deck = box(
+box(
   environment,
   pbr(0x26313b, 0.4, 0.65),
   0,
@@ -102,7 +106,6 @@ const deck = box(
   0.5,
   180,
 );
-deck.receiveShadow = true;
 const gridVertices = [];
 for (let x = -10; x <= 10; x += 2) gridVertices.push(x, 0, -90, x, 0, 90);
 for (let z = -90; z <= 90; z += 2) gridVertices.push(-10, 0, z, 10, 0, z);
@@ -135,7 +138,7 @@ for (let i = 0; i < 50; i++) {
   if (i % 2 === 0)
     box(environment, markerMaterial, 0, 0.001, z, 0.035, 0.009, 0.6);
 }
-// Procedural orbital backdrop: stars, distant planet, and orbital rings.
+// Mengisi latar orbital dengan bintang, planet, dan cincin yang dibuat secara prosedural.
 const starPositions = new Float32Array(1500 * 3);
 for (let i = 0; i < 1500; i++) {
   starPositions[i * 3] = (Math.random() - 0.5) * 500;
@@ -200,7 +203,7 @@ for (let i = 0; i < 12; i++) {
   m.rotation.z = (Math.random() - 0.5) * 0.15;
 }
 
-// Batch static runway pieces into one draw per material instead of hundreds.
+// Menggabungkan potongan arena statis per material untuk mengurangi jumlah draw call.
 const batches = new Map();
 for (const mesh of [...environment.children]) {
   if (!mesh.isMesh || mesh.geometry !== boxGeo) continue;
@@ -219,8 +222,8 @@ for (const [material, meshes] of batches) {
   environment.add(batch);
 }
 
-// Shared primitive geometry/materials live for the app; per-run assets are released.
 const sharedMaterials = new Set([metal, dark, cyan, amber]);
+// Menghapus objek dari scene dan melepas aset miliknya agar restart tidak menumpuk memori.
 function releaseObject(object) {
   scene.remove(object);
   object.traverse((child) => {
@@ -263,6 +266,7 @@ const raycaster = new THREE.Raycaster(),
   groundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -1),
   hit = new THREE.Vector3();
 const keys = new Set();
+// Memainkan nada sintetis singkat sebagai feedback ketika suara diaktifkan.
 function sound(freq = 400, duration = 0.1) {
   if (!audioEnabled) return;
   try {
@@ -286,14 +290,16 @@ function sound(freq = 400, duration = 0.1) {
     audioEnabled = false;
   }
 }
+// Menampilkan pesan singkat di arena lalu menjadwalkannya untuk menghilang.
 function notify(text, color = "#8ff9dd") {
   $("toast").textContent = text;
   $("toast").style.color = color;
   $("toast").style.opacity = 1;
   toastUntil = time + 1.65;
 }
+// Menyesuaikan jumlah kapal dan formasinya, lalu mengakhiri misi jika armada habis.
 function setFleet(n) {
-  fleet = Math.max(0, Math.min(60, n));
+  fleet = Math.max(0, Math.min(MAX_FLEET, n));
   while (ships.length < fleet) {
     const ship = shipTemplate.clone(true);
     ship.scale.setScalar(0.65);
@@ -314,6 +320,7 @@ function setFleet(n) {
   $("fleet").textContent = String(fleet).padStart(2, "0");
   if (fleet === 0 && state === "playing") finish(false);
 }
+// Menggambar tulisan pada canvas untuk digunakan sebagai label gate di dunia 3D.
 function label(text, color) {
   const c = document.createElement("canvas");
   c.width = 512;
@@ -335,6 +342,7 @@ function label(text, color) {
   s.scale.set(4.5, 2.25, 1);
   return s;
 }
+// Membangun gate pengali atau penambah kapal beserta label dan bidang hologramnya.
 function gate(x, z, type, value) {
   const g = new THREE.Group();
   g.position.set(x, 0, z);
@@ -369,6 +377,7 @@ function gate(x, z, type, value) {
   gates.push(g);
   return g;
 }
+// Membuat asteroid berputar yang bisa ditembak atau mengurangi kapal saat tertabrak.
 function asteroid(x, z, scale = 1) {
   const group = new THREE.Group();
   group.position.set(x, 1.1, z);
@@ -392,6 +401,7 @@ function asteroid(x, z, scale = 1) {
   obstacles.push(group);
   return group;
 }
+// Membangun turret yang mengarah ke armada dan menembakkan peluru secara berkala.
 function turret(x, z) {
   const g = new THREE.Group();
   g.position.set(x, 0, z);
@@ -417,6 +427,7 @@ function turret(x, z) {
   obstacles.push(g);
   return g;
 }
+// Menyusun mothership dari badan, sayap, mesin, dan inti yang dianimasikan.
 function makeBoss() {
   const g = new THREE.Group();
   g.position.set(0, 4, -52);
@@ -436,13 +447,13 @@ function makeBoss() {
   scene.add(g);
   return g;
 }
+// Menempatkan gate, asteroid, dan turret secara berselang agar jalur tetap bisa dilewati.
 function populate() {
   for (const z of [-30, -100, -180, -270, -360, -450]) {
     const i = Math.abs(z);
     gate(-4.3, z, "multiply", i === 100 || i === 360 ? 3 : 2);
     gate(4.3, z, "add", i === 180 || i === 450 ? 12 : 6);
   }
-  // Stagger threats so each wave leaves a navigable lane.
   for (let i = 0; i < 22; i++) {
     asteroid([0, 5.8, -5.8, 2.6, -2.6][i % 5], -62 - i * 22, 1 + (i % 3) * 0.2);
   }
@@ -450,6 +461,7 @@ function populate() {
     turret(i % 2 ? -6.5 : 6.5, -78 - i * 29);
   }
 }
+// Menyebarkan partikel dari titik benturan untuk menampilkan efek ledakan sementara.
 function burst(pos, color = mint, count = 30) {
   const positions = new Float32Array(count * 3),
     vel = [];
@@ -477,6 +489,7 @@ function burst(pos, color = mint, count = 30) {
   scene.add(points);
   effects.push({ obj: points, vel, life: 1, total: 1 });
 }
+// Membuat cincin yang melebar dari armada sebagai visual gelombang pulse.
 function pulseEffect() {
   const ring = new THREE.Mesh(
     new THREE.TorusGeometry(1, 0.035, 6, 80),
@@ -487,6 +500,7 @@ function pulseEffect() {
   scene.add(ring);
   effects.push({ obj: ring, life: 0.65, total: 0.65, ring: true });
 }
+// Menghancurkan ancaman, membersihkan target aktif, dan menambah hitungan musuh yang dikalahkan.
 function destroy(obj) {
   burst(obj.position, obj.userData.type === "asteroid" ? orange : mint);
   releaseObject(obj);
@@ -495,6 +509,7 @@ function destroy(obj) {
   kills++;
   sound(170, 0.18);
 }
+// Mengurangi kapal yang terkena serangan dan menampilkan feedback kehilangan armada.
 function damage(amount) {
   if (state !== "playing") return;
   burst(fleetGroup.position, orange, 18);
@@ -502,6 +517,7 @@ function damage(amount) {
   if (fleet > 0) notify(`−${amount} SHIPS`, "#ff9f78");
   sound(100, 0.2);
 }
+// Membersihkan ancaman terdekat dan peluru musuh, lalu memulai cooldown tujuh detik.
 function pulse() {
   if (state !== "playing" || cooldown > 0) return;
   cooldown = 7;
@@ -518,6 +534,7 @@ function pulse() {
   notify("PULSE DISCHARGED");
 }
 const boltGeo = new THREE.BoxGeometry(0.07, 0.07, 1.5);
+// Membuat peluru visual yang bergerak dari penembak menuju posisi target.
 function fire(from, to, enemy = false) {
   const m = new THREE.Mesh(boltGeo, enemy ? amber : cyan);
   m.position.copy(from);
@@ -527,6 +544,7 @@ function fire(from, to, enemy = false) {
   const b = { mesh: m, dir, life: enemy ? 4 : 0.65 };
   (enemy ? enemyShots : bolts).push(b);
 }
+// Membersihkan misi sebelumnya dan mengembalikan armada, musuh, serta HUD ke kondisi awal.
 function start() {
   for (const obj of [...obstacles, ...gates, ...(boss ? [boss] : [])])
     releaseObject(obj);
@@ -566,6 +584,7 @@ function start() {
   notify("Choose a multiplier gate");
   sound(700, 0.25);
 }
+// Menghentikan gameplay dan menampilkan hasil menang atau kalah beserta statistik misi.
 function finish(win) {
   state = win ? "won" : "lost";
   $("result-label").textContent = win
@@ -580,6 +599,7 @@ function finish(win) {
   $("result").classList.remove("hidden");
   sound(win ? 850 : 100, 0.6);
 }
+// Menghentikan atau melanjutkan simulasi sekaligus memperbarui panel pause.
 function pause() {
   if (state === "playing") {
     state = "paused";
@@ -589,20 +609,24 @@ function pause() {
     $("pause-overlay").classList.add("hidden");
   }
 }
+// Melepas geometry dan material efek yang sudah selesai agar memorinya bisa digunakan kembali.
 function disposeEffect(e) {
   e.obj.geometry.dispose();
   e.obj.material.dispose();
 }
+// Menghubungkan tombol antarmuka dengan alur mulai, restart, pause, dan pulse.
 $("launch").onclick = start;
 $("restart").onclick = start;
 $("pause").onclick = pause;
 $("resume").onclick = pause;
 $("pulse").onclick = pulse;
+// Mengaktifkan atau mematikan audio dan memainkan nada sebagai konfirmasi.
 $("sound").onclick = () => {
   audioEnabled = !audioEnabled;
   $("sound").textContent = audioEnabled ? "SOUND ON" : "SOUND OFF";
   if (audioEnabled) sound(500);
 };
+// Menerjemahkan tombol keyboard menjadi steering, pulse, atau perubahan status pause.
 window.addEventListener("keydown", (e) => {
   if (
     [
@@ -622,11 +646,14 @@ window.addEventListener("keydown", (e) => {
     if ((e.code === "Escape" || e.code === "KeyP") && !e.repeat) pause();
   }
 });
+// Melepas tombol dari daftar input aktif agar gerakan berhenti ketika tombol dilepas.
 window.addEventListener("keyup", (e) => keys.delete(e.code));
+// Membersihkan input dan menjeda game ketika window kehilangan fokus.
 window.addEventListener("blur", () => {
   keys.clear();
   if (state === "playing") pause();
 });
+// Memproyeksikan posisi pointer ke bidang arena untuk menentukan arah gerak armada.
 function pointerMove(e) {
   if (state !== "playing") return;
   const rect = renderer.domElement.getBoundingClientRect();
@@ -639,6 +666,7 @@ function pointerMove(e) {
     targetX = THREE.MathUtils.clamp(hit.x, -7.8, 7.8);
 }
 renderer.domElement.addEventListener("pointermove", pointerMove);
+// Memakai Raycaster untuk memilih objek yang diklik dan memberikan damage langsung.
 renderer.domElement.addEventListener("pointerdown", (e) => {
   if (state !== "playing") return;
   pointerMove(e);
@@ -662,6 +690,7 @@ renderer.domElement.addEventListener("pointerdown", (e) => {
 });
 renderer.domElement.style.touchAction = "none";
 
+// Memajukan misi, memproses gate dan tabrakan, serta mengatur serangan sampai misi berakhir.
 function updateGame(dt) {
   distance += dt * RUN_SPEED;
   const left = keys.has("KeyA") || keys.has("ArrowLeft"),
@@ -835,6 +864,7 @@ function updateGame(dt) {
 }
 const cameraGoal = new THREE.Vector3();
 const clock = new THREE.Clock();
+// Menjalankan simulasi bertahap, memperbarui animasi dan kamera, lalu merender satu frame.
 function animate() {
   requestAnimationFrame(animate);
   const dt = Math.min(clock.getDelta(), 0.1);
@@ -916,6 +946,7 @@ function animate() {
   if (time > toastUntil) $("toast").style.opacity = 0;
   composer.render();
 }
+// Menyesuaikan kamera dan ukuran render ketika dimensi layar berubah.
 window.addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
@@ -925,6 +956,7 @@ window.addEventListener("resize", () => {
 });
 new GLTFLoader().load(
   `${import.meta.env.BASE_URL}assets/vanguard.gltf`,
+  // Menyiapkan kapal dari GLTF dan membuka tombol mulai setelah asset berhasil dimuat.
   (gltf) => {
     shipTemplate = gltf.scene;
     setFleet(8);
@@ -938,6 +970,7 @@ new GLTFLoader().load(
       "A / D to steer · Click to target · Space to pulse";
   },
   undefined,
+  // Menampilkan petunjuk mencoba ulang jika asset kapal gagal dimuat.
   () => {
     $("load-status").textContent =
       "Ship asset gagal dimuat. Refresh halaman untuk mencoba lagi.";

@@ -1,7 +1,7 @@
-"""Original flat-shaded spaceship, embedded-buffer glTF 2.0. No external assets."""
+"""Membangun kapal low-poly orisinal dan menyimpannya sebagai glTF dengan buffer tertanam."""
 import json, struct, base64, math
 from pathlib import Path
-# Triangular faces deliberately define a small angular interceptor.
+# Menyusun titik dan bidang segitiga yang membentuk badan serta sayap kapal.
 vertices=[(0,.16,-.9),(-.25,0,.35),(.25,0,.35),(0,.35,.05),(0,-.12,.2),(-.8,-.04,.55),(.8,-.04,.55),(-.19,.05,.6),(.19,.05,.6)]
 faces=[(0,1,3),(0,3,2),(0,4,1),(0,2,4),(1,2,3),(1,4,2),(0,5,1),(0,2,6),(1,5,7),(2,8,6),(1,7,3),(2,3,8)]
 pos=[];norm=[]
