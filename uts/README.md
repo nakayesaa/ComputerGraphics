@@ -6,6 +6,8 @@ UTS EF234504 · Grafika Komputer. Kendalikan armada melalui multiplier gate, ast
 | --- | --- |
 | Hajendra Herlambang | 5025241101 |
 
+Main online: https://nakayesaa.github.io/ComputerGraphics/uts/play/
+
 ## Menjalankan
 
 Node.js 20.19+. Jalankan dari folder `uts`:
@@ -15,7 +17,7 @@ npm install
 npm run dev
 ```
 
-Buka URL Vite. `npm run build` membuat produksi; `npm run preview` menjalankannya. `npm test` memeriksa aturan armada, formasi, dan sektor.
+Buka URL Vite. `npm run build` membuat produksi; `npm run preview` menjalankannya. `npm test` memeriksa aturan armada, formasi, dan sektor. `npm run deploy:build` memperbarui folder `play` untuk GitHub Pages.
 
 ## Gameplay dan kontrol
 
