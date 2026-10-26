@@ -2,10 +2,9 @@
 
 UTS EF234504 · Grafika Komputer. Kendalikan armada melalui multiplier gate, asteroid, dan turret untuk mengalahkan mothership.
 
-| Anggota | NRP | Kontribusi aktual |
-| --- | --- | --- |
-| [Nama 1] | [NRP] | [Isi kontribusi] |
-| [Nama 2, bila ada] | [NRP] | [Isi kontribusi] |
+| Anggota | NRP |
+| --- | --- |
+| Hajendra Herlambang | 5025241101 |
 
 ## Menjalankan
 
@@ -32,6 +31,6 @@ Challenge: menjaga performa saat armada bertambah. Arena memakai 6 batch Instanc
 
 ## Asset credits
 
-Model kapal GLTF, objek prosedural, UI, VFX, dan audio sintetis dibuat untuk project ini; implementasi awal dibantu Codex. Three.js dan Vite berlisensi MIT. Isi kontribusi sesuai pekerjaan aktual.
+Model kapal GLTF, objek prosedural, UI, VFX, dan audio sintetis dibuat untuk project ini; implementasi awal dibantu Codex. Three.js dan Vite berlisensi MIT.
 
 Video demo: [Isi link]. Repository: https://github.com/nakayesaa/ComputerGraphics/tree/main/uts
