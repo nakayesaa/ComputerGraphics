@@ -97,4 +97,4 @@ Implementasi awal dibantu AI (Codex). Tim perlu meninjau, mengembangkan, dan mem
 
 **Video demo:** [Isi link]
 
-**Repository GitHub:** [ComputerGraphics / uts](https://github.com/nakayesaa/ComputerGraphics/tree/gh-pages/uts)
+**Repository GitHub:** [ComputerGraphics / uts](https://github.com/nakayesaa/ComputerGraphics/tree/main/uts)
