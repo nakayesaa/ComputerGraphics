@@ -5,6 +5,7 @@ UTS EF234504 · Grafika Komputer. Kendalikan armada melalui multiplier gate, ast
 | Anggota | NRP |
 | --- | --- |
 | Hajendra Herlambang | 5025241101 |
+| Muhammad Abdul Rafi | 5025231093 |
 
 Main online: https://nakayesaa.github.io/ComputerGraphics/uts/play/
 
