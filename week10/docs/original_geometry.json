@@ -1,0 +1,293 @@
+[
+  {
+    "name": "Body",
+    "type": "MESH",
+    "location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": null,
+    "modifiers": [
+      [
+        "Solidify",
+        "SOLIDIFY"
+      ],
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 12,
+    "faces": 9
+  },
+  {
+    "name": "FootRight",
+    "type": "MESH",
+    "location": [
+      1.350000023841858,
+      0.0,
+      -1.0800000429153442
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      0.2750000059604645,
+      1.25,
+      0.10999999940395355
+    ],
+    "parent": null,
+    "modifiers": [
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 8,
+    "faces": 6
+  },
+  {
+    "name": "FrontMirror",
+    "type": "MESH",
+    "location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": null,
+    "modifiers": [
+      [
+        "Mirror",
+        "MIRROR"
+      ],
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 8,
+    "faces": 6
+  },
+  {
+    "name": "HandleGrip",
+    "type": "MESH",
+    "location": [
+      0.0,
+      0.0,
+      1.5499999523162842
+    ],
+    "rotation": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": "lID",
+    "modifiers": [
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 8,
+    "faces": 6
+  },
+  {
+    "name": "HandlePostLeft",
+    "type": "MESH",
+    "location": [
+      -0.8999999761581421,
+      0.0,
+      1.2999999523162842
+    ],
+    "rotation": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": "lID",
+    "modifiers": [
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 8,
+    "faces": 6
+  },
+  {
+    "name": "HandleRight",
+    "type": "MESH",
+    "location": [
+      0.8999999761581421,
+      0.0,
+      1.2999999523162842
+    ],
+    "rotation": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": "lID",
+    "modifiers": [
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 8,
+    "faces": 6
+  },
+  {
+    "name": "LeftFoot",
+    "type": "MESH",
+    "location": [
+      -1.350000023841858,
+      0.0,
+      -1.0800000429153442
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      0.2750000059604645,
+      1.25,
+      0.10999999940395355
+    ],
+    "parent": null,
+    "modifiers": [
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 8,
+    "faces": 6
+  },
+  {
+    "name": "lID",
+    "type": "MESH",
+    "location": [
+      0.0,
+      1.440000057220459,
+      1.0
+    ],
+    "rotation": [
+      -0.02518182434141636,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": null,
+    "modifiers": [
+      [
+        "Solidify",
+        "SOLIDIFY"
+      ],
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 16,
+    "faces": 13
+  },
+  {
+    "name": "Nakayesaa",
+    "type": "CURVE",
+    "location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rotation": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": "lID",
+    "modifiers": [],
+    "verts": 0,
+    "faces": 0
+  },
+  {
+    "name": "sideribs",
+    "type": "MESH",
+    "location": [
+      2.0299999713897705,
+      -0.75,
+      -0.10000000149011612
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "parent": null,
+    "modifiers": [
+      [
+        "Array",
+        "NODES"
+      ],
+      [
+        "Bevel",
+        "BEVEL"
+      ]
+    ],
+    "verts": 8,
+    "faces": 6
+  }
+]
