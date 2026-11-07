@@ -1,0 +1,517 @@
+{
+  "blender_version": "5.2.3 LTS",
+  "scenes": [
+    {
+      "name": "Scene",
+      "frame_start": 1,
+      "frame_end": 80,
+      "current_frame": 4,
+      "camera": null
+    }
+  ],
+  "objects": [
+    {
+      "name": "Body",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        4.0,
+        2.880000114440918,
+        2.0
+      ],
+      "parent": null,
+      "vertices": 12,
+      "faces": 9,
+      "modifiers": [
+        {
+          "name": "Solidify",
+          "type": "SOLIDIFY",
+          "viewport": true,
+          "render": true,
+          "thickness": 0.059999994933605194,
+          "offset": -1.0
+        },
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.050000011920928955,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "NavyPaint"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "FootRight",
+      "type": "MESH",
+      "location": [
+        1.350000023841858,
+        0.0,
+        -1.0800000429153442
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.2750000059604645,
+        1.25,
+        0.10999999940395355
+      ],
+      "dimensions": [
+        0.550000011920929,
+        2.5,
+        0.2199999988079071
+      ],
+      "parent": null,
+      "vertices": 8,
+      "faces": 6,
+      "modifiers": [
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.05000000074505806,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "RubberBlack"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "FrontMirror",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        2.8600001335144043,
+        0.24000000953674316,
+        0.6000000238418579
+      ],
+      "parent": null,
+      "vertices": 8,
+      "faces": 6,
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "viewport": true,
+          "render": true,
+          "use_axis": [
+            true,
+            false,
+            false
+          ],
+          "use_clip": false
+        },
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.03000001423060894,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "Steel"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "HandleGrip",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        1.5499999523162842
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        2.0,
+        0.3499999940395355,
+        0.2199999988079071
+      ],
+      "parent": "lID",
+      "vertices": 8,
+      "faces": 6,
+      "modifiers": [
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.04000001400709152,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "RubberBlack"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "HandlePostLeft",
+      "type": "MESH",
+      "location": [
+        -0.8999999761581421,
+        0.0,
+        1.2999999523162842
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.2199999988079071,
+        0.3499999940395355,
+        0.3499999940395355
+      ],
+      "parent": "lID",
+      "vertices": 8,
+      "faces": 6,
+      "modifiers": [
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.04000001400709152,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "Steel"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "HandleRight",
+      "type": "MESH",
+      "location": [
+        0.8999999761581421,
+        0.0,
+        1.2999999523162842
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.2199999988079071,
+        0.3499999940395355,
+        0.3499999940395355
+      ],
+      "parent": "lID",
+      "vertices": 8,
+      "faces": 6,
+      "modifiers": [
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.04000001400709152,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "Steel"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "LeftFoot",
+      "type": "MESH",
+      "location": [
+        -1.350000023841858,
+        0.0,
+        -1.0800000429153442
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.2750000059604645,
+        1.25,
+        0.10999999940395355
+      ],
+      "dimensions": [
+        0.550000011920929,
+        2.5,
+        0.2199999988079071
+      ],
+      "parent": null,
+      "vertices": 8,
+      "faces": 6,
+      "modifiers": [
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.05000000074505806,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "RubberBlack"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "lID",
+      "type": "MESH",
+      "location": [
+        0.0,
+        1.440000057220459,
+        1.0
+      ],
+      "rotation": [
+        -0.02518182434141636,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        4.0,
+        2.880000114440918,
+        0.15000009536743164
+      ],
+      "parent": null,
+      "vertices": 16,
+      "faces": 13,
+      "modifiers": [
+        {
+          "name": "Solidify",
+          "type": "SOLIDIFY",
+          "viewport": true,
+          "render": true,
+          "thickness": 0.05999999865889549,
+          "offset": -1.0
+        },
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.050000011920928955,
+          "segments": 3
+        }
+      ],
+      "materials": [
+        "SfetyOrange"
+      ],
+      "action": "lIDAction",
+      "animation": [
+        {
+          "path": "rotation_euler",
+          "index": 0,
+          "keys": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              41.0,
+              -1.5707963705062866
+            ],
+            [
+              80.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "path": "rotation_euler",
+          "index": 1,
+          "keys": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              41.0,
+              0.0
+            ],
+            [
+              80.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "path": "rotation_euler",
+          "index": 2,
+          "keys": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              41.0,
+              0.0
+            ],
+            [
+              80.0,
+              0.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nakayesaa",
+      "type": "CURVE",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.632152795791626,
+        0.3199583888053894,
+        0.06673705577850342
+      ],
+      "parent": "lID",
+      "vertices": null,
+      "faces": null,
+      "modifiers": [],
+      "materials": [
+        "Steel"
+      ],
+      "action": null,
+      "animation": []
+    },
+    {
+      "name": "sideribs",
+      "type": "MESH",
+      "location": [
+        2.0299999713897705,
+        -0.75,
+        -0.10000000149011612
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.11999999731779099,
+        1.6800000667572021,
+        1.2000000476837158
+      ],
+      "parent": null,
+      "vertices": 8,
+      "faces": 6,
+      "modifiers": [
+        {
+          "name": "Array",
+          "type": "NODES",
+          "viewport": true,
+          "render": true,
+          "node_group": "Array",
+          "node_count": 365
+        },
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "viewport": true,
+          "render": true,
+          "width": 0.02500000037252903,
+          "segments": 2
+        }
+      ],
+      "materials": [
+        "Steel"
+      ],
+      "action": null,
+      "animation": []
+    }
+  ],
+  "text_blocks": {}
+}
