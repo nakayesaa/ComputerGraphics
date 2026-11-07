@@ -1,3 +1,13 @@
+# Attribution — Damaged Helmet
+
+Source: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/DamagedHelmet
+
+© 2018 ctxwing — rebuild and conversion to glTF, CC BY 4.0.
+© 2016 theblueturtle_ — earlier model, CC BY-NC 4.0.
+Used for noncommercial educational work. Metallic and Roughness PNGs were extracted from the original packed map; material nodes were rearranged in Blender.
+
+The original license file follows.
+
 # LICENSE file for the model: Damaged Helmet
 
 All files in this directory tree are licensed as indicated below.
