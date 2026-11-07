@@ -1,0 +1,340 @@
+{
+  "passed": true,
+  "test": "Only .blend copied into temporary directory, textures/ absent",
+  "image_count": 37,
+  "images": [
+    {
+      "image": "AO.jpg",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "BaseColor.jpg",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Emission.jpg",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Helmet_Metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Helmet_Roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Image_2",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Image_3",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Image_4",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Navy_BaseColor",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Navy_Emission",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Navy_Metallic",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Navy_Normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Navy_Roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Normal.jpg",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Orange_BaseColor",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Orange_Emission",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Orange_Metallic",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Orange_Normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Orange_Roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Rubber_BaseColor",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Rubber_Emission",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Rubber_Metallic",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Rubber_Normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Rubber_Roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Status_BaseColor",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Status_Emission",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Status_Metallic",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Status_Normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Status_Roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Steel_BaseColor",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Steel_Emission",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Steel_Metallic",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Steel_Normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "Steel_Roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    },
+    {
+      "image": "UV_Checker_2048",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "external_file_exists_after_move": false
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "objects": [
+    {
+      "object": "LeftFoot",
+      "faces": 6,
+      "seam_edges": 12,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "FootRight",
+      "faces": 6,
+      "seam_edges": 12,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "Status_Emission_Plaque",
+      "faces": 6,
+      "seam_edges": 12,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "Body",
+      "faces": 22,
+      "seam_edges": 32,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "HandlePostLeft",
+      "faces": 6,
+      "seam_edges": 12,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "HandleRight",
+      "faces": 6,
+      "seam_edges": 12,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "HandleGrip",
+      "faces": 6,
+      "seam_edges": 12,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "FrontMirror",
+      "faces": 12,
+      "seam_edges": 24,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "sideribs",
+      "faces": 30,
+      "seam_edges": 60,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "object": "lID",
+      "faces": 30,
+      "seam_edges": 48,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "uv_bounds": [
+    [
+      0.012177499942481518,
+      0.012177523225545883
+    ],
+    [
+      0.9877387285232544,
+      0.9878224730491638
+    ]
+  ],
+  "uv_islands": 110,
+  "minimum_island_gap_pixels_1024": 24.93951416015625,
+  "triangle_overlap_count": 0,
+  "overlaps": [],
+  "texel_density_px_per_blender_unit": {
+    "min": 58.23232876586723,
+    "max": 58.23493528193422,
+    "median": 58.233299942597206
+  },
+  "triangle_anisotropy": {
+    "median": 1.0000021758302917,
+    "max": 1.0000681534410951
+  },
+  "uv_triangle_area_sum": 0.3954797509514946,
+  "images": [
+    {
+      "name": "AO.jpg",
+      "path": "//textures\\helmet\\AO.jpg",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "BaseColor.jpg",
+      "path": "//textures\\helmet\\BaseColor.jpg",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Emission.jpg",
+      "path": "//textures\\helmet\\Emission.jpg",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Helmet_Metallic",
+      "path": "//textures\\helmet\\Helmet_Metallic.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Helmet_Roughness",
+      "path": "//textures\\helmet\\Helmet_Roughness.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Image_0",
+      "path": "",
+      "packed": true,
+      "external_exists": true,
+      "used": false,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Image_1",
+      "path": "",
+      "packed": true,
+      "external_exists": true,
+      "used": false,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Image_2",
+      "path": "",
+      "packed": true,
+      "external_exists": true,
+      "used": false,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Image_3",
+      "path": "",
+      "packed": true,
+      "external_exists": true,
+      "used": false,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Image_4",
+      "path": "",
+      "packed": true,
+      "external_exists": true,
+      "used": false,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Navy_BaseColor",
+      "path": "//textures\\toolbox\\Navy_BaseColor.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Navy_Emission",
+      "path": "//textures\\toolbox\\Navy_Emission.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Navy_Metallic",
+      "path": "//textures\\toolbox\\Navy_Metallic.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Navy_Normal",
+      "path": "//textures\\toolbox\\Navy_Normal.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Navy_Roughness",
+      "path": "//textures\\toolbox\\Navy_Roughness.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Normal.jpg",
+      "path": "//textures\\helmet\\Normal.jpg",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Orange_BaseColor",
+      "path": "//textures\\toolbox\\Orange_BaseColor.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Orange_Emission",
+      "path": "//textures\\toolbox\\Orange_Emission.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Orange_Metallic",
+      "path": "//textures\\toolbox\\Orange_Metallic.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Orange_Normal",
+      "path": "//textures\\toolbox\\Orange_Normal.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Orange_Roughness",
+      "path": "//textures\\toolbox\\Orange_Roughness.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Rubber_BaseColor",
+      "path": "//textures\\toolbox\\Rubber_BaseColor.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Rubber_Emission",
+      "path": "//textures\\toolbox\\Rubber_Emission.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Rubber_Metallic",
+      "path": "//textures\\toolbox\\Rubber_Metallic.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Rubber_Normal",
+      "path": "//textures\\toolbox\\Rubber_Normal.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Rubber_Roughness",
+      "path": "//textures\\toolbox\\Rubber_Roughness.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Status_BaseColor",
+      "path": "//textures\\toolbox\\Status_BaseColor.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Status_Emission",
+      "path": "//textures\\toolbox\\Status_Emission.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Status_Metallic",
+      "path": "//textures\\toolbox\\Status_Metallic.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Status_Normal",
+      "path": "//textures\\toolbox\\Status_Normal.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Status_Roughness",
+      "path": "//textures\\toolbox\\Status_Roughness.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Steel_BaseColor",
+      "path": "//textures\\toolbox\\Steel_BaseColor.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Steel_Emission",
+      "path": "//textures\\toolbox\\Steel_Emission.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    },
+    {
+      "name": "Steel_Metallic",
+      "path": "//textures\\toolbox\\Steel_Metallic.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Steel_Normal",
+      "path": "//textures\\toolbox\\Steel_Normal.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "Steel_Roughness",
+      "path": "//textures\\toolbox\\Steel_Roughness.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "Non-Color"
+    },
+    {
+      "name": "UV_Checker_2048",
+      "path": "//textures\\toolbox\\UV_Checker_2048.png",
+      "packed": true,
+      "external_exists": true,
+      "used": true,
+      "color_space": "sRGB"
+    }
+  ],
+  "blender_version": "5.2.3 LTS"
+}
