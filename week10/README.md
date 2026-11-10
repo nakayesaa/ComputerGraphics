@@ -6,6 +6,8 @@ Muhammad Abdul Rafi — NRP: -
 
 Praktikum ini mengembangkan toolbox Praktikum 9 dengan penentuan seam, UV unwrap, checker test, penyamaan texel density, dan packing tanpa overlap. Material PBR menggunakan Principled BSDF dengan Base Color, Roughness, Metallic, Normal Map, dan Emission serta color space yang sesuai. Challenge meliputi multi-material, variasi roughness, metal dan cat, serta normal detail. Eksplorasi PBR memakai [Damaged Helmet dari Khronos](https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/DamagedHelmet) dengan [atribusi dan lisensi terlampir](textures/helmet/LICENSE.md). File Blender, texture, dan screenshot proses tersedia di folder ini.
 
+Untuk demo gabungan, buka [file Blender](P10_Kelompok_Toolbox.blend) dan pilih scene `00_DEMO_COMBINED`. Scene ini sudah aktif saat file dibuka; tekan F12 untuk render ulang.
+
 **1. Asset sebelum UV**
 
 Toolbox Praktikum 9 digunakan sebagai dasar. Geometry, scale, dan normal diperiksa sebelum unwrap.
@@ -95,3 +97,27 @@ Map Base Color, Roughness, Metallic, Normal, Emission, dan AO dihubungkan ke mat
 Setelah map diterapkan, warna, kilap metal, detail kerusakan, dan emission terlihat pada model dengan geometry yang sama.
 
 ![Helmet setelah PBR](screenshots/12_helmet_pbr.png)
+
+**16. Scene gabungan untuk demo**
+
+Toolbox dan helmet digabung dalam scene `00_DEMO_COMBINED`, dengan toolbox di kiri dan helmet di atas pedestal di kanan. Ground dan alas display menyatukan komposisi. Scene ini langsung aktif saat [file Blender](P10_Kelompok_Toolbox.blend) dibuka.
+
+![Scene gabungan di Blender](screenshots/18_combined_scene_blender.png)
+
+**17. Lighting**
+
+Empat Area Light digunakan sebagai key, fill, rim hangat, dan edge dingin untuk memperjelas bentuk, bayangan, serta perbedaan material kedua model.
+
+![Lighting scene gabungan](screenshots/20_combined_lighting.png)
+
+**18. Camera**
+
+Kamera perspektif 55 mm diarahkan ke tengah kedua model. Aperture f/10 menjaga keduanya tetap jelas dalam komposisi.
+
+![Pengaturan kamera](screenshots/19_combined_camera.png)
+
+**19. Render gabungan**
+
+Hasil akhir dirender menggunakan Cycles, 128 samples, dan denoising pada resolusi 1920 × 1280. Kedua model menggunakan lighting dan kamera yang sama, dengan seluruh texture tetap dipack di file Blender. Tekan F12 untuk render ulang.
+
+![Render final scene gabungan](screenshots/17_combined_scene_final.png)
